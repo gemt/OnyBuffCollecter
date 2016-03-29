@@ -1,0 +1,10 @@
+## Interface: 11200
+## Title: OnyBuffCollecter
+## Version: 1.0
+## Notes: We want Ony buff
+## Author: Gemt
+
+## SavedVariablesPerCharacter: OnyBuffCollector_vars
+
+
+OnyBuffCollector.lua

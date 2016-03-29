@@ -2,7 +2,8 @@ local Frame = CreateFrame("FRAME");
 Frame:RegisterEvent("CHAT_MSG_YELL");
 Frame:SetScript("OnEvent", function () ChatParse_EventHandler(event, arg1, arg2) end)
 
-
+local start_str = "People of the Horde, citizens of Orgrimmar, come, gather round and celebrate heroes of the Horde. On this day, "
+local end_str = ", under the auspicies of our glorious Warchief, laid a mortal blow against the Black Dragonflight. The brood mother. Onyxia, has been slain!"
 function ChatParse_EventHandler(event, text, player)
 
 	if event != "CHAT_MSG_YELL" then return
@@ -11,6 +12,10 @@ function ChatParse_EventHandler(event, text, player)
 	
 	_print("Got yell from Overlord Runthak!")
 	_print(text)
+	
+	local without_start = string.gsub(text,start_str, "")
+	local without_all = string.gsub(without_start, end_str, "")
+	_print(without_all)
 	
 end
 
