@@ -4,7 +4,7 @@
 ## Notes: We want Ony buff
 ## Author: Gemt
 
-## SavedVariablesPerCharacter: OnyBuffCollector_vars
+## SavedVariables: OnyBuffCollector_buff_table
 
 
 OnyBuffCollecter.lua
