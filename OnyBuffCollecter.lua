@@ -16,14 +16,15 @@ local end_str = ", under the auspices of our glorious Warchief, laid a mortal bl
 --OnyBuffCollector_buff_table = {}
 
 function OnyBuffCollecter_EventHandler(event, text, player)
+
 	--[[
 	if event == "ADDON_LOADED" then
 		if OnyBuffCollector_buff_table == nil then
 			OnyBuffCollector_buff_table = {}
 			--buff_table_index = 1
-			_print("fresh savedVariables, initializing empty table")
+			OBC_print("fresh savedVariables, initializing empty table")
 		else
-			_print("got some savedVariables, loading them!")
+			OBC_print("got some savedVariables, loading them!")
 			while OnyBuffCollector_buff_table[i] ~= nil do
 				--buff_table_index = buff_table_index + 1
 			end		
@@ -59,6 +60,8 @@ function save_buff(player_name)
 	--local hours,minutes=GetGameTime()
 	local date_time_str = date()
 	
+	local guild_name = "unknown"
+	
 	--just prepending instead, makes the savedVariables list nicer anyway
 	table.insert(OnyBuffCollector_buff_table, 1, date_time_str);
 	table.insert(OnyBuffCollector_buff_table, 1, player_name);
@@ -66,17 +69,17 @@ function save_buff(player_name)
 	--buff_table_index = buff_table_index + 1	
 	--buff_table_index = buff_table_index + 1
 		
-	_print(player_name.." used ony buff at "..date_time_str)
+	OBC_print(player_name.." used ony buff at "..date_time_str)
 end
 
 function print_index()
-	_print(buff_table_index)
+	OBC_print(buff_table_index)
 end
 
 function print_table()
 	local i = 1
 	while OnyBuffCollector_buff_table[i] ~= nil do
-		_print(OnyBuffCollector_buff_table[i])
+		OBC_print(OnyBuffCollector_buff_table[i])
 		i = i + 1
 	end
 end
@@ -96,20 +99,20 @@ function print_table_formatted()
 	end
 	]]--
 	
-	_print("== start of print ==")
+	OBC_print("== start of print ==")
 	local i = 1
 	while OnyBuffCollector_buff_table[i] ~= nil and OnyBuffCollector_buff_table[i+1] ~= nil do
-		_print(OnyBuffCollector_buff_table[i].." - "..OnyBuffCollector_buff_table[i+1])
+		OBC_print(OnyBuffCollector_buff_table[i].." - "..OnyBuffCollector_buff_table[i+1])
 		i = i + 2	
 	end
-	_print("== end of print ==")
+	OBC_print("== end of print ==")
 	
 end
 
 
 --Prints a message in the default chatframe.
 --Only visible to you.
-local function _print( msg )
+function OBC_print( msg )
     if not DEFAULT_CHAT_FRAME then return end
     DEFAULT_CHAT_FRAME:AddMessage ( msg )
     ChatFrame3:AddMessage ( msg )
